@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	dial, err := ethclient.Dial("https://mainnet.infura.io/v3/b3cca88747014b828db633bfc327473e")
+	dial, err := ethclient.Dial("https://mainnet.infura.io")
 	if err != nil {
 		panic(err)
 	}
