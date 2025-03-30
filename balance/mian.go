@@ -10,11 +10,11 @@ import (
 )
 
 func main() {
-	client, err := ethclient.Dial("https://mainnet.infura.io/v3/b3cca88747014b828db633bfc327473e")
+	client, err := ethclient.Dial("https://mainnet.infura.io/v3")
 	if err != nil {
 		log.Println("err", err)
 	}
-	address := common.HexToAddress("0x71c7656ec7ab88b098defb751b7401b5f6d8976f")
+	address := common.HexToAddress("*90809890899890890")
 	balanceAt, err := client.BalanceAt(context.Background(), address, nil)
 	if err != nil {
 		log.Println("err", err)
