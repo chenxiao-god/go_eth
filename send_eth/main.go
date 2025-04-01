@@ -3,10 +3,12 @@ package main
 import (
 	"context"
 	"crypto/ecdsa"
+	"encoding/hex"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/ethereum/go-ethereum/rlp"
 	"log"
 	"math/big"
 )
@@ -60,9 +62,19 @@ func main() {
 	})
 	// 10.签名交易 参数1：交易对象 参数2：签名对象 参数3：私钥·
 	signedTx, err := types.SignTx(tx, types.NewEIP155Signer(networkID), privateKey)
+	rawTxBytes, err := signedTx.MarshalBinary()
 	if err != nil {
 		log.Println("err", err)
 	}
+	//rawTxBytes := ts.GetRlp(0)
+	rawTxHex := hex.EncodeToString(rawTxBytes)
+	log.Println(rawTxHex)
+	bytes, err := hex.DecodeString(rawTxHex)
+	if err != nil {
+		log.Println("err", err)
+	}
+	tx = new(types.Transaction)
+	rlp.DecodeBytes(bytes, &tx)
 	// 11发送交易
 	if err := client.SendTransaction(context.Background(), signedTx); err != nil {
 		log.Println("err", err)

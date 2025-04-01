@@ -12,8 +12,8 @@ import (
 func main() {
 	// 创建正则表达式
 	compile := regexp.MustCompile("^0x[0-9a-fA-F]{40}$")
-	fmt.Printf("is valid: %v\n", compile.MatchString("0x323b5d4c32345ced77393b3530b1eed0f346429d")) // is valid: true
-	fmt.Printf("is valid: %v\n", compile.MatchString("0xZYXb5d4c32345ced77393b3530b1eed0f346429d"))
+	fmt.Printf("is valid: %v\n", compile.MatchString("333333333333333333333333333")) // is valid: true
+	fmt.Printf("is valid: %v\n", compile.MatchString("333333333333333333333333333333"))
 
 	client, err := ethclient.Dial("xxxxxxxxx")
 	if err != nil {

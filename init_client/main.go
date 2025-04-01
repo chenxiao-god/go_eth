@@ -17,7 +17,7 @@ func main() {
 		log.Fatal(err)
 	}
 	// 账户
-	account := common.HexToAddress("0x71c7656ec7ab88b098defb751b7401b5f6d8976f")
+	account := common.HexToAddress("0xfioiuiouyogfjhjjh")
 	log.Println("账户", account)
 	blockNumber := big.NewInt(0)
 	// 余额
